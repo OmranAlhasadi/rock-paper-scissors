@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Simple console based rock-paper-scissors game
+Simple console.log based rock-paper-scissors game
