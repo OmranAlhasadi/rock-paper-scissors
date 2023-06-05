@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Simple console.log based rock-paper-scissors game
+Interactive Rock Paper Scissors game with UI made with HTML CSS and Javascript
