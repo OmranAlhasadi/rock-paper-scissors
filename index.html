@@ -4,80 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./rps-logic.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+    <div class="header">
+        <div class="title">ROCK PAPER SCISSORS GO!</div>
+    </div>
 
-    <script>
-        const choices = ["rock", "paper", "scissors"]
-
-        function getComputerChoice(){
-            let computerChoice = choices[Math.floor(Math.random()*choices.length)]
-            console.log("Computer choice is: " + computerChoice)
-            return computerChoice
-
-        }
-
-        function playRound(playerChoice, computerChoice){
-            const outcomes = {
-                rock: {paper: "lose", scissors: "win"},
-                paper: {rock: "win", scissors: "lose"},
-                scissors: {rock: "lose", paper: "win"}
-            }
-
-            if(playerChoice == computerChoice){
-                console.log("The result is a TIE")
-                return 0
-            } else{
-                console.log(`Player ${outcomes[playerChoice][computerChoice]} against computer `);
-                if(outcomes[playerChoice][computerChoice] == "win") return 1
-                else if(outcomes[playerChoice][computerChoice] == "lose") return -1
-                else console.log("an error occured when deciding winner")
-            }
-        }
-
-        function getPlayerChoice(){
-            let choice 
-            while(choice==null){
-
-                check = prompt("choose 'rock' 'paper' or 'scissors':")
-                if(check.toLowerCase() === "rock" || check.toLowerCase() === "paper" || check.toLowerCase() === "scissors"){
-                    choice = check.toLowerCase()
-                    console.log(`Player choice is ${choice}`)
-                } else console.log("ERROR: please check spelling")
-                
-
-            }
+    <div class="container">
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h1 id="winner"></h1>
+                <button id="restart-btn">Restart Game</button>
+            </div>
+        </div>
+        <div id="backdrop" class="backdrop"></div>
+        
+        <div class="sub-container">
+            <div class="result" style="font-size: 30px; font-weight: bold;"></div>
             
-            return choice
-        }
+            <div class="match">
+                <div class="player">
+                    
+                    <a class="player-choice" ><img src="./images/questionMark.jpg"></a>
+                    <div class="player-wins" style="font-size: 20px; "></div>
 
-        function game(){
-            let playerWins=0,computerWins=0,ties=0
+                </div>
+                <div class="computer">
+                    
+                    <a class="computer-choice" ><img src="./images/questionMark.jpg"></a>
+                    <div class="computer-wins" style="font-size: 20px; "></div>
 
-            for(let i=0;i<5;i++){
-                let result = playRound(getPlayerChoice(), getComputerChoice())
-                switch(result){
-                    case 1:
-                        playerWins++
-                        break;
-                    case 0:
-                        ties++
-                        break;
-                    case -1:
-                        computerWins++
-                        break;
-                }
-            }
+                </div>
+                
+                
+            </div>
+            
+            <div class="weapons">
+                <a class="rock" ><img src="./images/rock.jpg"></a>
+                <a class="paper" ><img src="./images/paper.jpg"></a>
+                <a class="scissors" ><img src="./images/scissors.jpg"></a>
+            </div>
+            <div class="instruction" style="font-size: 30px; font-weight: bold;">Choose your weapon</div>
+        </div>
+    </div>
 
-            console.log(`Player won ${playerWins} times while computer won ${computerWins} times out of 5 rounds`)
-            if(playerWins>computerWins) console.log("Player wins!")
-            else if(playerWins<computerWins) console.log("Computer wins")
-            else console.log("It is a Tie")
-        }
-
-        game()
-    </script>
     
 </body>
 </html>
